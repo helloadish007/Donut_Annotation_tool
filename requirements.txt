@@ -6,4 +6,5 @@ streamlit
 streamlit_float
 python-doctr
 doctr
-python-Levenshtein rapidfuzz
+python-Levenshtein 
+rapidfuzz
