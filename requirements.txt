@@ -7,4 +7,4 @@ streamlit_float
 python-doctr
 doctr
 python-Levenshtein 
-rapidfuzz
+rapidfuzz==2.15.1
