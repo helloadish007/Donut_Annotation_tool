@@ -6,3 +6,4 @@ streamlit_float
 python-doctr
 doctr
 opencv-contrib-python==4.5.5.62
+apt-get install libgl1 
