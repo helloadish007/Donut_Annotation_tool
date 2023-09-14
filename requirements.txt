@@ -5,4 +5,4 @@ streamlit
 streamlit_float
 python-doctr
 doctr
-opencv-python-headless
+opencv-python==4.5.5.64
