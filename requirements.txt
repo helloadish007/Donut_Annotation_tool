@@ -1,5 +1,6 @@
 numpy
 torch
+opencv-python
 Pillow
 streamlit
 streamlit_float
