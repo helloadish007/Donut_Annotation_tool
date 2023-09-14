@@ -5,5 +5,4 @@ streamlit
 streamlit_float
 python-doctr
 doctr
-opencv-python==4.5.5.64
-skia-python
+opencv-contrib-python==4.5.5.62
