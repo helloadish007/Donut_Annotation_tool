@@ -1,8 +1,8 @@
 numpy
 torch
-opencv-python-headless
 Pillow
 streamlit
 streamlit_float
 python-doctr
 doctr
+opencv-contrib-python
