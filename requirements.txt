@@ -1,8 +1,8 @@
-numpy==1.20.3
-torch==1.9.0
-Pillow==8.2.0
-streamlit==1.1.0
-streamlit_float==0.8.0
-python-doctr==0.6.1
-doctr==0.9.3
-opencv-contrib-python==4.5.4.60  # Use opencv-contrib-python
+numpy
+torch
+Pillow
+streamlit
+streamlit_float
+python-doctr
+doctr
+opencv-python-headless
