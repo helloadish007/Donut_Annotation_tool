@@ -1,5 +1,6 @@
 numpy
 torch
+torchvision
 Pillow
 streamlit
 streamlit_float
