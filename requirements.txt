@@ -1,6 +1,6 @@
 numpy
 torch
-opencv-python
+opencv-python-headless
 Pillow
 streamlit
 streamlit_float
