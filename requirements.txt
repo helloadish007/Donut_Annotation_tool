@@ -1,0 +1,5 @@
+numpy
+doctr
+Pillow
+streamlit
+streamlit_float
