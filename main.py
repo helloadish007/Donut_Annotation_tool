@@ -155,12 +155,12 @@ if uploaded_image is not None:
     image_array = np.array(image)  # Convert the PIL Image to a NumPy array
     create_float_box(uploaded_image)
     
-    tab1, tab2 = st.tabs(["📈 Table", "🗃 Data"])
+    tab1, tab2 = st.tabs(["📈 Uploaded Image", "🗃 Create Annotation"])
     with tab1:
-        st.header("TABLE VISUALIZATION :")
+        st.header("VISUALIZATION :")
         st.image(uploaded_image, caption="Uploaded Image", use_column_width=True)
     with tab2:
-        st.header("ANNOTATION :")
+        #st.header("ANNOTATION :")
         # Display the OCR results
         # Load the OCR model
         if 'model' not in st.session_state or 'results' not in st.session_state:
