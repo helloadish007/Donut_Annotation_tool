@@ -3,7 +3,7 @@
 import numpy as np
 from doctr.models import ocr_predictor
 from PIL import Image
-
+import math
 
 import streamlit as st
 from streamlit_float import *
@@ -41,6 +41,42 @@ json_dict={}
 
 if 'json_dict' not in st.session_state:
     st.session_state.json_dict = {}
+
+
+def convert_coordinates(geometry, page_dim):
+    len_x = page_dim[1]
+    len_y = page_dim[0]
+    (x_min, y_min) = geometry[0]
+    (x_max, y_max) = geometry[1]
+    x_min = math.floor(x_min * len_x)
+    x_max = math.ceil(x_max * len_x)
+    y_min = math.floor(y_min * len_y)
+    y_max = math.ceil(y_max * len_y)
+    return [x_min, x_max, y_min, y_max]
+
+def get_coordinates(output):
+    page_dim = output['pages'][0]["dimensions"]
+    text_coordinates = []
+    for obj1 in output['pages'][0]["blocks"]:
+        for obj2 in obj1["lines"]:
+            for obj3 in obj2["words"]:                
+                converted_coordinates = convert_coordinates(
+                                           obj3["geometry"], page_dim
+                                          )
+                text_coordinates.append([converted_coordinates, obj3["value"]])
+    
+    # Sort the text_coordinates list based on the y_min coordinate (index 2 in each sub-list)
+    sorted_coordinates = sorted(text_coordinates, key=lambda x: x[0][2])
+    
+    return sorted_coordinates
+
+def get_csv(data):
+    graphical_coordinates = get_coordinates(data)
+    # Extract only the values from graphical_coordinates
+    values = [value for coordinates, value in graphical_coordinates]
+    # Join the values into a CSV format
+    csv_data = ','.join(values)
+    return csv_data
 
 @st.cache_resource
 def load_ocr():
@@ -150,6 +186,9 @@ if uploaded_image is not None:
                         column.append(word_value)
                     #rows.append(row)
                     columns.append(' '.join(column))
+        show_csv = st.toggle("Show_extracted_csv")
+        if show_csv:
+            csv_data=st.text_area('Extracted CSV [ROW_WISE]:',get_csv(data) )
         with st.form("json",clear_on_submit=True):
             column_header = st.multiselect(
             'KEY (Eg : Column header )',
